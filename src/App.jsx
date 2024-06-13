@@ -4,6 +4,7 @@ import FactCard from './components/FactCard'
 import Button from './components/Button'
 
 const App = () => {
+      const [isDarkMode, setIsDarkMode] = useState(false);
   const [fact, setFact] = useState('')
    const copyToClipboard = () => {
     navigator.clipboard.writeText(fact);
@@ -16,6 +17,7 @@ const App = () => {
     })
   }
   
+ 
 
 
   useEffect(() => {
@@ -36,14 +38,16 @@ const App = () => {
 
 
   return (
-    <div className='h-screen w-full bg-cover flex flex-col items-center ' style={{ backgroundImage: "url(/bg_img.jpg)" }}>
-      <Navbar />
-      <FactCard factText={fact} onClick={copyToClipboard,shareFact}/>
+    <div className='h-screen w-full bg-cover flex flex-col items-center background ' style={{ backgroundImage: isDarkMode? "url(/image.jpg)":"url(/bg_img.jpg)"  }}>
+      <Navbar setIsDarkMode={setIsDarkMode} isDarkMode={isDarkMode}  />
+      <FactCard factText={fact} onClick={()=>{copyToClipboard() ;
+         shareFact()}}/>
       <div className='flex gap-16'>
         <Button onClick={() => fetchFact()} btnText={"Random Fact"} />
         <Button onClick={() => fetchTodayFact()} btnText={"Today's Fact"} />
 
       </div>
+      
     </div>
   )
 }

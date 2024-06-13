@@ -17,7 +17,11 @@ const FactCard = ({factText,onClick}) => {
   // }
 
   return (
-    <div className='w-[500px] h-[250px] flex flex-col rounded-md  facts gap-2 items-center  mt-14'>
+    <div className='w-[500px] h-[250px] flex flex-col rounded-md   gap-2 items-center  mt-14' style={{
+      backdropFilter: 'blur(23px) saturate(200%)',
+      WebkitBackdropFilter: 'blur(43px) saturate(200%)',
+      backgroundColor: 'rgba(83, 121, 186, 0.561)'
+    }}>
      
       <h1 className='text-3xl font-bold text-white p-4 top-0'>Today's Fact</h1>
       <div className='text-xl pb-6  h-[120px] w-[450px] text-white'>{factText}</div>
